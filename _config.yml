@@ -10,3 +10,14 @@ plugins:
 
 
 gem "github-pages", group: :jekyll_plugins
+show_downloads: ["true" or "false" (unquoted) to indicate whether to provide a download URL]
+google_analytics: [Your Google Analytics tracking ID]
+
+---
+---
+
+@import "{{ site.theme }}";
+
+github:
+  zip_url: http://example.com/download.zip
+  another_url: another value
