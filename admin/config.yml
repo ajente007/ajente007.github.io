@@ -1,0 +1,90 @@
+backend:
+  name: git-gateway
+  branch: main
+  # Para Auth0, agrega estas líneas:
+  # auth:
+  #   provider: auth0
+  #   config:
+  #     domain: TU-DOMINIO.auth0.com
+  #     client_id: TU-CLIENT-ID
+
+# Configuración de medios
+media_folder: "assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+# Configuración del sitio
+site_url: https://tu-sitio.netlify.app
+display_url: https://tu-sitio.netlify.app
+logo_url: https://tu-sitio.netlify.app/assets/images/logo.png
+
+# Colecciones
+collections:
+  # Posts del blog
+  - name: "posts"
+    label: "📝 Posts"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: true
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "post"}
+      - {label: "📝 Título", name: "title", widget: "string", required: true}
+      - {label: "📅 Fecha", name: "date", widget: "datetime", format: "YYYY-MM-DD HH:mm:ss ZZ"}
+      - {label: "👤 Autor", name: "author", widget: "string", default: "Admin"}
+      - {label: "📂 Categorías", name: "categories", widget: "list", default: ["blog"]}
+      - {label: "🏷️ Tags", name: "tags", widget: "list", required: false}
+      - {label: "🖼️ Imagen destacada", name: "image", widget: "image", required: false}
+      - {label: "📄 Extracto", name: "excerpt", widget: "text", required: false}
+      - {label: "🔒 Borrador", name: "draft", widget: "boolean", default: false}
+      - {label: "📖 Contenido", name: "body", widget: "markdown"}
+
+  # Páginas estáticas
+  - name: "pages"
+    label: "📄 Páginas"
+    files:
+      - label: "🏠 Inicio"
+        name: "index"
+        file: "index.md"
+        fields:
+          - {label: "Layout", name: "layout", widget: "hidden", default: "home"}
+          - {label: "Título", name: "title", widget: "string"}
+          - {label: "Contenido", name: "body", widget: "markdown"}
+      
+      - label: "ℹ️ Acerca de"
+        name: "about"
+        file: "about.md"
+        fields:
+          - {label: "Layout", name: "layout", widget: "hidden", default: "page"}
+          - {label: "Título", name: "title", widget: "string"}
+          - {label: "Contenido", name: "body", widget: "markdown"}
+      
+      - label: "📧 Contacto"
+        name: "contact"
+        file: "contact.md"
+        fields:
+          - {label: "Layout", name: "layout", widget: "hidden", default: "page"}
+          - {label: "Título", name: "title", widget: "string"}
+          - {label: "Email", name: "email", widget: "string"}
+          - {label: "Contenido", name: "body", widget: "markdown"}
+
+  # Configuraciones del sitio
+  - name: "settings"
+    label: "⚙️ Configuración"
+    files:
+      - label: "🌐 Configuración general"
+        name: "config"
+        file: "_config.yml"
+        fields:
+          - {label: "Título del sitio", name: "title", widget: "string"}
+          - {label: "Descripción", name: "description", widget: "text"}
+          - {label: "URL base", name: "baseurl", widget: "string", required: false}
+          - {label: "URL del sitio", name: "url", widget: "string"}
+          - {label: "Email", name: "email", widget: "string"}
+          - {label: "Autor", name: "author", widget: "string"}
+          - {label: "Twitter", name: "twitter_username", widget: "string", required: false}
+          - {label: "GitHub", name: "github_username", widget: "string", required: false}
+
+# Configuración del editor
+editor:
+  preview: true
