@@ -3,22 +3,101 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin - Mi Blog</title>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <title>Admin - ajente007</title>
+  <!-- Auth0 SDK -->
+  <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
 </head>
 <body>
-  <!-- Include the script that builds the page and powers Decap CMS -->
+  <div id="loading">Loading admin panel ...</div>
+  
+  <!-- Decap CMS -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  
   <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
+    // Configuración de Auth0
+    const auth0Config = {
+      domain: 'TU-DOMINIO.auth0.com', // Cambia esto por tu dominio de Auth0
+      clientId: 'TU-CLIENT-ID',        // Cambia esto por tu Client ID de Auth0
+      redirectUri: window.location.origin + '/admin/',
+      audience: 'https://TU-DOMINIO.auth0.com/api/v2/' // Opcional
+    };
+
+    let auth0Client;
+
+    // Inicializar Auth0
+    async function initAuth0() {
+      auth0Client = await auth0.createAuth0Client(auth0Config);
+      
+      // Verificar si el usuario está autenticado
+      const isAuthenticated = await auth0Client.isAuthenticated();
+      
+      if (isAuthenticated) {
+        // Usuario autenticado, mostrar CMS
+        document.getElementById('loading').style.display = 'none';
+        initCMS();
+      } else {
+        // Verificar si viene de un callback de Auth0
+        if (window.location.search.includes('code=')) {
+          await auth0Client.handleRedirectCallback();
+          window.history.replaceState({}, document.title, '/admin/');
+          initCMS();
+        } else {
+          // Redirigir al login de Auth0
+          await auth0Client.loginWithRedirect();
         }
+      }
+    }
+
+    // Inicializar CMS con token de Auth0
+    async function initCMS() {
+      try {
+        const token = await auth0Client.getTokenSilently();
+        const user = await auth0Client.getUser();
+        
+        // Configurar CMS con el token
+        window.CMS.registerPreviewStyle('/assets/css/main.css');
+        
+        // Custom auth para Decap CMS
+        window.CMS.init({
+          config: {
+            backend: {
+              name: 'git-gateway',
+              branch: 'main',
+              auth: {
+                provider: 'auth0',
+                config: {
+                  domain: auth0Config.domain,
+                  clientId: auth0Config.clientId
+                }
+              }
+            }
+          }
+        });
+        
+        console.log('CMS inicializado para:', user.email);
+        
+      } catch (error) {
+        console.error('Error al inicializar CMS:', error);
+        await auth0Client.loginWithRedirect();
+      }
+    }
+
+    // Función de logout
+    function logout() {
+      auth0Client.logout({
+        returnTo: window.location.origin
       });
     }
+
+    // Inicializar cuando cargue la página
+    window.addEventListener('DOMContentLoaded', initAuth0);
   </script>
+  
+  <!-- Botón de logout (opcional) -->
+  <div style="position: fixed; top: 10px; right: 10px; z-index: 9999;">
+    <button onclick="logout()" id="logoutBtn" style="display: none; padding: 8px 16px; background: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer;">
+      Cerrar Sesión
+    </button>
+  </div>
 </body>
 </html>
