@@ -16,43 +16,52 @@
   <script>
     // Configuración de Auth0
     const auth0Config = {
-      domain: 'dev-67dz1qdpc75ighw7.us.auth0.com', // Cambia esto por tu dominio de Auth0
-      clientId: 'AUNrD9aHkbEFRK3ULU7Lampz3fSG8jUl',        // Cambia esto por tu Client ID de Auth0
-      redirectUri: redirectUri: window.location.origin + '/admin/',
-      audience: 'https://TU-DOMINIO.auth0.com/api/v2/' // Opcional
+      domain: 'dev-67dz1qdpc75ighw7.us.auth0.com',
+      clientId: 'AUNrD9aHkbEFRK3ULU7Lampz3fSG8jUl',
+      redirectUri: window.location.origin + '/admin/',
+      // audience: 'https://TU-DOMINIO.auth0.com/api/v2/' // Opcional - comentado por ahora
     };
-
+    
     let auth0Client;
-
+    
     // Inicializar Auth0
     async function initAuth0() {
-      auth0Client = await auth0.createAuth0Client(auth0Config);
-      
-      // Verificar si el usuario está autenticado
-      const isAuthenticated = await auth0Client.isAuthenticated();
-      
-      if (isAuthenticated) {
-        // Usuario autenticado, mostrar CMS
-        document.getElementById('loading').style.display = 'none';
-        initCMS();
-      } else {
-        // Verificar si viene de un callback de Auth0
-        if (window.location.search.includes('code=')) {
-          await auth0Client.handleRedirectCallback();
-          window.history.replaceState({}, document.title, '/admin/');
+      try {
+        auth0Client = await auth0.createAuth0Client(auth0Config);
+        
+        // Verificar si el usuario está autenticado
+        const isAuthenticated = await auth0Client.isAuthenticated();
+        
+        if (isAuthenticated) {
+          // Usuario autenticado, mostrar CMS
+          document.getElementById('loading').style.display = 'none';
           initCMS();
         } else {
-          // Redirigir al login de Auth0
-          await auth0Client.loginWithRedirect();
+          // Verificar si viene de un callback de Auth0
+          if (window.location.search.includes('code=')) {
+            await auth0Client.handleRedirectCallback();
+            window.history.replaceState({}, document.title, '/admin/');
+            document.getElementById('loading').style.display = 'none';
+            initCMS();
+          } else {
+            // Redirigir al login de Auth0
+            await auth0Client.loginWithRedirect();
+          }
         }
+      } catch (error) {
+        console.error('Error inicializando Auth0:', error);
+        document.getElementById('loading').innerHTML = 'Error: ' + error.message;
       }
     }
-
+    
     // Inicializar CMS con token de Auth0
     async function initCMS() {
       try {
         const token = await auth0Client.getTokenSilently();
         const user = await auth0Client.getUser();
+        
+        // Mostrar botón de logout
+        document.getElementById('logoutBtn').style.display = 'block';
         
         // Configurar CMS con el token
         window.CMS.registerPreviewStyle('/assets/css/main.css');
@@ -81,14 +90,14 @@
         await auth0Client.loginWithRedirect();
       }
     }
-
+    
     // Función de logout
     function logout() {
       auth0Client.logout({
         returnTo: window.location.origin
       });
     }
-
+    
     // Inicializar cuando cargue la página
     window.addEventListener('DOMContentLoaded', initAuth0);
   </script>
