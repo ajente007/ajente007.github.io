@@ -2,20 +2,20 @@ backend:
   name: git-gateway
   branch: main
   # Para Auth0, agrega estas líneas:
-  # auth:
-  #   provider: auth0
-  #   config:
-  #     domain: TU-DOMINIO.auth0.com
-  #     client_id: TU-CLIENT-ID
+   auth:
+    provider: auth0
+    config:
+       domain: dev-67dz1qdpc75ighw7.us.auth0.com
+       client_id: AUNrD9aHkbEFRK3ULU7Lampz3fSG8jUl
 
 # Configuración de medios
 media_folder: "assets/images/uploads"
 public_folder: "/assets/images/uploads"
 
 # Configuración del sitio
-site_url: https://tu-sitio.netlify.app
-display_url: https://tu-sitio.netlify.app
-logo_url: https://tu-sitio.netlify.app/assets/images/logo.png
+site_url: https://ajente007.netlify.app
+display_url: https://ajente007.netlify.app
+logo_url: https://ajente007.netlify.app/assets/img/Mr 150 x 150.jpg
 
 # Colecciones
 collections:
