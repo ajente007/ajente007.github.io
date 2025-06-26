@@ -9,8 +9,8 @@ backend:
        client_id: AUNrD9aHkbEFRK3ULU7Lampz3fSG8jUl
 
 # Configuración de medios
-media_folder: "assets/images/uploads"
-public_folder: "/assets/images/uploads"
+media_folder: "assets/img"
+public_folder: "/assets/img"
 
 # Configuración del sitio
 site_url: https://ajente007.netlify.app
