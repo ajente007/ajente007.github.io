@@ -213,3 +213,15 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+    # Para que funcione mejor con el CMS
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Configuración de colecciones si usas más que posts
+collections:
+  projects:
+    output: true
+    permalink: /:collection/:name/
