@@ -13,9 +13,9 @@ media_folder: "assets/img"
 public_folder: "/assets/img"
 
 # Configuración del sitio
-site_url: https://ajente007.netlify.app
-display_url: https://ajente007.netlify.app
-logo_url: https://ajente007.netlify.app/assets/img/Mr 150 x 150.jpg
+site_url: https://ajente007.github.io
+display_url: https://ajente007.github.io
+logo_url: https://ajente007.github.io/assets/img/Mr 150 x 150.jpg
 
 # Colecciones
 collections:
