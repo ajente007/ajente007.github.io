@@ -4,10 +4,7 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-> Resolución de máquinas.
-{: .prompt-info }
-
-> Write-ups.
+> Write-ups, tools, scripts.
 {: .prompt-info }
 
 ---
