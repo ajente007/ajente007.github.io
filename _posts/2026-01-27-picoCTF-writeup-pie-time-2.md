@@ -5,7 +5,7 @@ date: 2026-01-27
 toc: true
 pin: false
 image: 
- path: /assets/img/picoctf-writeup-pie_time/logo.png
+ path: /assets/img/picoctf-writeup-pie-time/logo.png
 categories:
   - picoctf 
   - ctf 
@@ -17,7 +17,7 @@ tags:
 ---
 ##   Information Gathering 
 
-![](assets/img/picoctf-writeup-pie_time/new.png)
+![](assets/img/picoctf-writeup-pie-time/new.png)
 
 Descargamos el Código fuente del programa y el binario.
 
@@ -98,34 +98,34 @@ chmod +x vuln
 
 Ejecutamos y nos pide un nombre, ponemos cualquier cosa y después nos pide una dirección al cual saltar; pero a partir de aquí vamos ha automatizar el proceso de explotación con python:
 
-![697](assets/img/picoctf-writeup-pie_time/name.png)
+![](assets/img/picoctf-writeup-pie-time/name.png)
 
 
 Debemos indicar en el código que inicie Hasta antes de "name:", para después inyectar nuestro primer payload.
 
 
-![](assets/img/picoctf-writeup-pie_time/payload.png)
+![](assets/img/picoctf-writeup-pie-time/payload.png)
 
 
 Para la segunda fase lo mismo que inicie hasta antes de "0x12345:".
 
 
-![](assets/img/picoctf-writeup-pie_time/jump.png)
+![](assets/img/picoctf-writeup-pie-time/jump.png)
 
 
 Tenemos el exploit, una flag de ejemplo y los archivos del binario.
 
 
-![](assets/img/picoctf-writeup-pie_time/flag.png)
+![](assets/img/picoctf-writeup-pie-time/flag.png)
 
 
 Después de automatizar la explotación, la probamos en local, creando el archivo flag.txt para comprobar si funciona.
 
-![](assets/img/picoctf-writeup-pie_time/txt.png)
+![](assets/img/picoctf-writeup-pie-time/txt.png)
 
 Ejecutamos el exploit con python.
 
-![](assets/img/picoctf-writeup-pie_time/f.png)
+![](assets/img/picoctf-writeup-pie-time/f.png)
 
 
 Pero antes debemos ver como se configura en el exploit, el ir contra el archivo vuln que tenemos en local.
@@ -161,7 +161,7 @@ print(response.decode()
 Una vez comprobamos que funciona vamos a lanzarlo a servidor remoto del ctf. 
 
 
-![](assets/img/picoctf-writeup-pie_time/remote.png)
+![](assets/img/picoctf-writeup-pie-time/remote.png)
 
 
 Obtenemos la flag y vamos haber esa parte del código que revisamos antes para lanzarlo el local y corroborar.
@@ -195,7 +195,7 @@ print(response.decode())
 
 
 
-![](assets/img/picoctf-writeup-pie_time/picoff.png)
+![](assets/img/picoctf-writeup-pie-time/picoff.png)
 
 > <a href="https://play.picoctf.org/users/ajente007" target="_blank">PIE TIME 2 CTF from picoCTF has been Cracking</a>
 {: .prompt-tip }
