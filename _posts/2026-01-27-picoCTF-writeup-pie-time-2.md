@@ -4,7 +4,8 @@ description: Un reto de explotación binaria donde combinamos una vulnerabilidad
 date: 2026-01-27
 toc: true
 pin: false
-image: '{"path":"/assets/img/picoctf-writeup-pie_time/logo.jpg"}'
+image: 
+ path: /assets/img/picoctf-writeup-pie_time/logo.JPG
 categories:
   - picoctf 
   - ctf 
@@ -16,7 +17,7 @@ tags:
 ---
 ##   Information Gathering 
 
-![](assets/img/picoctf-writeup-pie_time/new.jpg)
+![](assets/img/picoctf-writeup-pie_time/new.JPG)
 
 Descargamos el Código fuente del programa y el binario.
 
@@ -97,34 +98,34 @@ chmod +x vuln
 
 Ejecutamos y nos pide un nombre, ponemos cualquier cosa y después nos pide una dirección al cual saltar; pero a partir de aquí vamos ha automatizar el proceso de explotación con python:
 
-![697](assets/img/picoctf-writeup-pie_time/name.jpg)
+![697](assets/img/picoctf-writeup-pie_time/name.JPG)
 
 
 Debemos indicar en el código que inicie Hasta antes de "name:", para después inyectar nuestro primer payload.
 
 
-![](assets/img/picoctf-writeup-pie_time/payload.jpg)
+![](assets/img/picoctf-writeup-pie_time/payload.JPG)
 
 
 Para la segunda fase lo mismo que inicie hasta antes de "0x12345:".
 
 
-![](assets/img/picoctf-writeup-pie_time/jump.jpg)
+![](assets/img/picoctf-writeup-pie_time/jump.JPG)
 
 
 Tenemos el exploit, una flag de ejemplo y los archivos del binario.
 
 
-![](assets/img/picoctf-writeup-pie_time/flag.jpg)
+![](assets/img/picoctf-writeup-pie_time/flag.JPG)
 
 
 Después de automatizar la explotación, la probamos en local, creando el archivo flag.txt para comprobar si funciona.
 
-![](assets/img/picoctf-writeup-pie_time/txt.jpg)
+![](assets/img/picoctf-writeup-pie_time/txt.JPG)
 
 Ejecutamos el exploit con python.
 
-![](assets/img/picoctf-writeup-pie_time/f.jpg)
+![](assets/img/picoctf-writeup-pie_time/f.JPG)
 
 
 Pero antes debemos ver como se configura en el exploit, el ir contra el archivo vuln que tenemos en local.
