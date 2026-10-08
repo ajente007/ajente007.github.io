@@ -4,7 +4,7 @@ description: "Support es una máquina Windows Easy de AD. Simula un controlador 
 date: 2026-09-26
 toc: true
 pin: false
-image: assets/img/htb-writeup-support/Support.png
+image: assets/img/htb-writeup-support/logo.png
 categories:
   - Hack The Box
   - Machines
