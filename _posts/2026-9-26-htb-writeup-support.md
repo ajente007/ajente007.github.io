@@ -9,14 +9,22 @@ categories:
   - Hack The Box
   - Machines
 tags:
-  - linux
+  - windows
   - smbmap
   - smbclient
   - bloohound
   - rusthound
   - nmap
-  - GenericAlll
-  - kerberos
+  - GenericAll
+  - kerberos user enumeration (kerbrute)
+  - ldapsearch
+  - impacket-getST
+  - Resource-based Constrained Delegation (rbcd attack)
+  - powermad
+  - powerview
+  - nxc
+  - exe binary analysis
+  - debugging with dnspy
 ---
 
 ## Recon
@@ -169,7 +177,7 @@ C:\Windows\System32\drivers\etc\hosts
 + ``DnsPy``es un debugger/descompilador y editor de ensamblados .NET open source se puede descargar desde su github.
 
 + es abrirlo y arrastrar el programa una vez dentro vamos has donde dice ``LdapQuery``
-+ ![](assets/img/htb-writeup-support/ldap-query.png)
+  ![](assets/img/htb-writeup-support/ldap-query.png)
 
 
 
