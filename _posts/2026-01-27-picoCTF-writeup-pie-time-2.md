@@ -5,7 +5,7 @@ date: 2026-01-27
 toc: true
 pin: false
 image: 
- path: /assets/img/picoctf-writeup-pie-time/logo.png
+ path: /assets/img/picoctf-writeup-pie-time/pie-time-2.png
 categories:
   - picoctf 
   - ctf 
