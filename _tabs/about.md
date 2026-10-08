@@ -9,4 +9,4 @@ order: 4
 
 ---
 
-<a href="https://app.hackthebox.com/public/users/1235067" target="_blank"><img src="https://www.hackthebox.com/badge/image/1235067" alt="HackTheBox"></a>
+<a href="https://app.hackthebox.com/profile/1235067" target="_blank"><img src="https://www.hackthebox.com/badge/image/1235067" alt="HackTheBox"></a>
