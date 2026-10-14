@@ -1,6 +1,6 @@
 ---
 title: Touch
-description:
+description: Touch es una máquina Windows de dificultad Fácil en HackTheBox ambientada en un kiosco de check-in de aeropuerto. La ruta de ataque abusa de una API sin autenticación que filtra el serial usado como contraseña, y se escapa del kiosco forzando un error al desactivar la funcion passport del "check in" para abrir Edge, obtienemos credenciales de MySQL y se escala a SYSTEM mediante una DLL maliciosa.
 date: 2026-10-05
 toc: true
 pin: false
