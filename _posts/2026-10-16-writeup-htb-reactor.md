@@ -237,6 +237,3 @@ d225e688ef345641bbd8be45a5bf0880
 ```
 
 ---
-
-## Conclusión
-La máquina Reactor demuestra cómo una vulnerabilidad crítica en el stack de Next.js/React (CVE-2025-55182) puede comprometer un servicio. Además, resalta la importancia de asegurar los servicios de depuración (Node.js Inspector) y evitar el uso de hashes débiles (MD5) para almacenar contraseñas. La escalada de privilegios fue posible gracias a una mala configuración en un servicio systemd que exponía el puerto de depuración de Node.js.
