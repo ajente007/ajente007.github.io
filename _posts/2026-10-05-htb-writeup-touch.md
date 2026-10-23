@@ -14,10 +14,10 @@ tags:
   - windows
   - mysql
   - udf
-  - kiosk-escape
-  - access-unauthenticated-api
-  - disable-passport-check-in
-  - access-to-the-cmd-via-edge
+  - kiosk_escape
+  - access_unauthenticated_api
+  - disable_passport_check_in
+  - access_to_the_cmd_via_edge
 ---
 
 ## Resumen
