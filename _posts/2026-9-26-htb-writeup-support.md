@@ -8,8 +8,8 @@ image: assets/img/htb-writeup-support/logo.png
 categories:
   - Hack The Box
   - Machines
+  - Windows
 tags:
-  - windows
   - smbmap
   - smbclient
   - bloohound
@@ -18,8 +18,8 @@ tags:
   - GenericAll
   - kerberos user enumeration (kerbrute)
   - ldapsearch
-  - impacket-getST
-  - Resource-based Constrained Delegation (rbcd attack)
+  - impacket getST
+  - Resource based Constrained Delegation (rbcd attack)
   - powermad
   - powerview
   - nxc
