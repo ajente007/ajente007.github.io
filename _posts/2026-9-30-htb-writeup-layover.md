@@ -12,11 +12,11 @@ categories:
 tags:
   - linux
   - htb
-  - craft-cms
+  - craft cms
   - yii2
   - privesc
   - cve-2026-34990
-  - wifi-sniffing
+  - wifi sniffing
   - misconfigurations
   - ssh
   - python
