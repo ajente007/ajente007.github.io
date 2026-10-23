@@ -11,12 +11,12 @@ categories:
   - Linux
 tags:
   - linux
-  - Spring-Boot-Actuator
+  - Spring_Boot_Actuator
   - ClickHouse
-  - Blind-XXE
+  - Blind_XXE
   - ssh
-  - ClickHouse-FILE
-  - SUID-bash
+  - ClickHouse_FILE
+  - SUID_bash
 ---
 ## Resumen
 
