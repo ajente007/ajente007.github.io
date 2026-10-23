@@ -12,8 +12,8 @@ categories:
 tags:
   - linux
   - reversing
-  - binary_exploitation
-  - format_string_vuln
+  - binary exploitation
+  - format string vuln
 ---
 ##   Information Gathering 
 
