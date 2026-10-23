@@ -10,12 +10,12 @@ categories:
   - Machines
   - Linux
 tags:
-  - Linux-Fundamentals
-  - Web-Application-Security
+  - Linux_Fundamentals
+  - Web_Application_Security
   - Exploiting_CVE-2025-55182
-  - SQLite-Enumeration
-  - Abusing-Node_js-Inspector
-  - node-inspector
+  - SQLite_Enumeration
+  - Abusing_Node_js_Inspector
+  - node_inspector
   - React2Shell
 ---
 
