@@ -35,7 +35,7 @@ Resultados:
 - 80/tcp (HTTP): nginx (HTB Airways Booking)
 
 
-añadir el dominio al archivo hosts:
+añadir el dominio al /etc/hosts
 ```bash
 echo "10.129.21.177 takeoff.htb" | sudo tee -a /etc/hosts
 ```
