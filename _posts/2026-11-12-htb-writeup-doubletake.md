@@ -1,6 +1,6 @@
 ---
 title: DoubleTake
-description: DoubleTake es una máquina Linux de dificultad fácil. Un bypass de autenticación en OpenSSH sobre musl (crypt() devolviendo "*" con contraseñas largas) da acceso a un contenedor Alpine. Un perfil de Firefox guardado filtra credenciales de otro usuario, que a su vez abren un panel web con función de deploy. Esa función expone la API de Docker, vulnerable a una resolución de binarios desde el overlay del contenedor — reemplazar xz y subir un archivo comprimido ejecuta el binario como root del host.
+description: DoubleTake es una máquina linux fácil. Un bypass de autenticación en OpenSSH sobre musl (crypt() devolviendo "*" con contraseñas largas) da acceso a un contenedor Alpine. Un perfil de Firefox guardado filtra credenciales de otro usuario, que a su vez abren un panel web con función de deploy. Esa función expone la API de Docker, vulnerable a una resolución de binarios desde el overlay del contenedor — reemplazar xz y subir un archivo comprimido ejecuta el binario como root del host.
 date: 2026-11-12
 toc: true
 pin: false
